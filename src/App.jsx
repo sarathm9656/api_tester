@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./App.css"; // Add styles for dark mode and layout
+import "./App.css"; 
 
 const App = () => {
+
+  
+    const handleOpenNewTab = () => {
+      const currentUrl = window.location.href; // Get the current page URL
+      window.open(currentUrl, "_blank"); // Open it in a new tab
+    };
   const [activeTab, setActiveTab] = useState("Parameters");
   const [parameters, setParameters] = useState([{ key: "", value: "" }]);
   const [headers, setHeaders] = useState([{ key: "", value: "" }]);
@@ -75,7 +81,7 @@ const App = () => {
       </header>
 
       <main>
-        {/* URL and Method Selection */}
+        
         <div className="request-config">
           <select value={method} onChange={(e) => setMethod(e.target.value)}>
             <option value="GET">GET</option>
@@ -83,6 +89,7 @@ const App = () => {
             <option value="PUT">PUT</option>
             <option value="DELETE">DELETE</option>
           </select>
+          <div className="api_input_section">
           <input
             type="text"
             placeholder="https://example.com/api"
@@ -90,10 +97,20 @@ const App = () => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
+          </div>
+          <div className="send_butt_section">
           <button className="send-button" onClick={sendRequest}>Send</button>
+          </div>
+
+          <div className="new_tab_section">
+             <button className=" new_tab_butt" onClick={handleOpenNewTab}> New Tab</button>
+                      
+                  
+           </div>
+    
         </div>
 
-        {/* Tabs */}
+
         <div className="tabs">
           {["Parameters", "Body", "Headers", "Authorization", "Pre-request Script"].map((tab) => (
             <button
@@ -233,7 +250,6 @@ const App = () => {
           )}
         </div>
 
-        {/* Response Section */}
         <div className="response-section">
           <h3>Response</h3>
           {response && <pre>{JSON.stringify(response, null, 2)}</pre>}

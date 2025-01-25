@@ -36,6 +36,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  gap: 0px;
 }
 
 .url-input {
@@ -64,6 +65,10 @@ body {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
+  
+}
+.new_tab_section{
+  padding-left: 10px;
 }
 
 .tab-button {
@@ -142,6 +147,8 @@ textarea {
 
 .response-section {
   margin-top: 80px;
+  max-width: 1200px;
+  max-height: 500px;
 }
 
 .response-section pre {
@@ -149,6 +156,7 @@ textarea {
   padding: 20px;
   border-radius: 5px;
   overflow-x: auto;
+  height: 200px;
 }
 
 .error {
@@ -156,7 +164,7 @@ textarea {
 }
 
 .error pre {
-  color: white;
+  color: rgb(201, 52, 52);
   margin: 0;
 }
 
